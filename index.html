@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Teachers' Day, Sir Randy Bello</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --blue: #159bd3;
+    --dark-blue: #086b9c;
+    --red: #e53935;
+    --yellow: #ffd83d;
+    --white: #fffdf5;
+    --text: #24445a;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    overflow-x: hidden;
+    background:
+        radial-gradient(circle at 20% 20%, #ffffffaa 0 4px, transparent 5px),
+        radial-gradient(circle at 80% 70%, #ffffffaa 0 4px, transparent 5px),
+        linear-gradient(135deg, #8de1fa, #dff9ff);
+    color: var(--text);
+}
+
+/* Floating decorations */
+.decorations span {
+    position: fixed;
+    z-index: 0;
+    pointer-events: none;
+    animation: float 5s ease-in-out infinite;
+    opacity: .8;
+}
+
+.star1 {
+    top: 10%;
+    left: 8%;
+    font-size: 28px;
+}
+
+.star2 {
+    top: 20%;
+    right: 10%;
+    font-size: 35px;
+    animation-delay: 1s !important;
+}
+
+.star3 {
+    bottom: 15%;
+    left: 12%;
+    font-size: 25px;
+    animation-delay: 2s !important;
+}
+
+.star4 {
+    bottom: 12%;
+    right: 12%;
+    font-size: 30px;
+    animation-delay: 1.5s !important;
+}
+
+@keyframes float {
+    0%,100% {
+        transform: translateY(0) rotate(0);
+    }
+    50% {
+        transform: translateY(-18px) rotate(10deg);
+    }
+}
+
+/* Main */
+.container {
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 18px;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.doraemon-icon {
+    width: 75px;
+    height: 75px;
+    background: var(--blue);
+    border: 4px solid white;
+    border-radius: 50%;
+    margin: auto;
+    position: relative;
+    box-shadow: 0 8px 20px #006b8d33;
+}
+
+.doraemon-icon::before {
+    content: "";
+    position: absolute;
+    width: 45px;
+    height: 32px;
+    background: white;
+    border-radius: 50%;
+    left: 11px;
+    top: 24px;
+}
+
+.doraemon-icon::after {
+    content: "";
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    background: #e84b4b;
+    border-radius: 50%;
+    left: 27px;
+    top: 30px;
+}
+
+.header h1 {
+    margin-top: 15px;
+    color: var(--dark-blue);
+    font-size: clamp(28px, 6vw, 45px);
+}
+
+.header p {
+    margin-top: 8px;
+    font-size: 16px;
+    color: #39718c;
+}
+
+/* Envelope */
+.envelope-section {
+    width: min(100%, 520px);
+    perspective: 1200px;
+}
+
+.open-button {
+    border: none;
+    background: transparent;
+    width: 100%;
+    cursor: pointer;
+    padding: 20px;
+}
+
+.envelope {
+    width: min(100%, 430px);
+    height: 270px;
+    margin: auto;
+    position: relative;
+    filter: drop-shadow(0 20px 20px #086b9c44);
+    transition: transform .8s ease;
+}
+
+.envelope-back {
+    position: absolute;
+    inset: 0;
+    background: #087eb7;
+    border-radius: 18px;
+}
+
+.envelope-paper {
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    top: 12%;
+    height: 78%;
+    background: var(--white);
+    border-radius: 10px;
+    transition: transform .9s cubic-bezier(.2,.8,.2,1);
+}
+
+.envelope-front {
+    position: absolute;
+    inset: 0;
+    border-radius: 0 0 18px 18px;
+    background: #28a9dc;
+    clip-path: polygon(
+        0 0,
+        50% 57%,
+        100% 0,
+        100% 100%,
+        0 100%
+    );
+}
+
+.flap {
+    position: absolute;
+    width: 100%;
+    height: 58%;
+    top: 0;
+    left: 0;
+    background: #52bce5;
+    clip-path: polygon(0 0,100% 0,50% 100%);
+    transform-origin: top center;
+    transition: transform .8s cubic-bezier(.2,.8,.2,1);
+    z-index: 5;
+}
+
+.seal {
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: var(--yellow);
+    border: 5px solid white;
+    left: 50%;
+    top: 52%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    box-shadow: 0 5px 12px #55555544;
+    transition: .5s;
+}
+
+.seal::after {
+    content: "★";
+    position: absolute;
+    color: #d79000;
+    font-size: 27px;
+    left: 14px;
+    top: 11px;
+}
+
+.open-text {
+    display: block;
+    margin-top: 20px;
+    color: var(--dark-blue);
+    font-size: 19px;
+    font-weight: bold;
+}
+
+/* Opening animation */
+.opening .envelope {
+    transform: translateY(-25px) rotate(-1deg);
+}
+
+.opening .flap {
+    transform: rotateX(180deg);
+}
+
+.opening .envelope-paper {
+    transform: translateY(-110px);
+}
+
+.opening .seal {
+    opacity: 0;
+    transform: translate(-50%, -100%);
+}
+
+/* Letter */
+.letter {
+    display: none;
+    width: min(100%, 800px);
+    opacity: 0;
+    transform: translateY(40px) scale(.96);
+}
+
+.letter.show {
+    display: block;
+    animation: letterReveal .9s ease forwards;
+}
+
+@keyframes letterReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.letter-card {
+    background: var(--white);
+    border-radius: 28px;
+    padding: clamp(25px, 5vw, 55px);
+    box-shadow:
+        0 25px 70px #00688c35,
+        inset 0 0 0 3px white;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Doraemon-style corner */
+.letter-card::before {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: #dff7ff;
+    border-radius: 50%;
+    right: -45px;
+    top: -45px;
+}
+
+.letter-top {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    position: relative;
+    z-index: 2;
+}
+
+.photo-frame {
+    flex-shrink: 0;
+    width: 155px;
+    height: 180px;
+    padding: 7px;
+    background: white;
+    border-radius: 22px;
+    box-shadow: 0 8px 25px #176f9f30;
+    transform: rotate(-3deg);
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+/* Photo placeholder */
+.photo-frame img[src="T"] {
+    background: #cceefa;
+}
+
+.title-area h2 {
+    color: var(--dark-blue);
+    font-size: clamp(22px, 4vw, 32px);
+}
+
+.title-area h3 {
+    color: var(--blue);
+    margin-top: 10px;
+    font-size: 21px;
+}
+
+.divider {
+    height: 3px;
+    background: linear-gradient(
+        to right,
+        var(--blue),
+        var(--yellow),
+        transparent
+    );
+    margin: 28px 0;
+    border-radius: 5px;
+}
+
+.message {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.message p {
+    margin-bottom: 18px;
+}
+
+.highlight {
+    color: var(--blue);
+    font-weight: bold;
+}
+
+.signature {
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.signature strong {
+    display: block;
+    color: var(--dark-blue);
+    font-size: 22px;
+    margin-top: 7px;
+}
+
+/* Doraemon bell */
+.bell {
+    width: 65px;
+    height: 65px;
+    background: var(--yellow);
+    border: 4px solid #d99e13;
+    border-radius: 50%;
+    position: absolute;
+    right: 30px;
+    bottom: 25px;
+    box-shadow: 0 5px 12px #9e751d33;
+}
+
+.bell::before {
+    content: "";
+    width: 38px;
+    height: 7px;
+    background: #c48711;
+    position: absolute;
+    left: 9px;
+    top: 27px;
+    border-radius: 10px;
+}
+
+.bell::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: #a86f09;
+    position: absolute;
+    left: 24px;
+    top: 34px;
+    border-radius: 50%;
+}
+
+/* Button */
+.replay {
+    margin-top: 25px;
+    padding: 13px 28px;
+    border: none;
+    border-radius: 30px;
+    background: var(--blue);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 7px 15px #08729c44;
+    transition: .25s;
+}
+
+.replay:hover {
+    transform: translateY(-3px);
+    background: var(--dark-blue);
+}
+
+.replay:active {
+    transform: scale(.96);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    .container {
+        padding: 25px 12px;
+    }
+
+    .envelope {
+        height: 220px;
+    }
+
+    .letter-top {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .photo-frame {
+        width: 140px;
+        height: 165px;
+    }
+
+    .message {
+        font-size: 16px;
+    }
+
+    .bell {
+        opacity: .45;
+        right: 15px;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="decorations">
+    <span class="star1">⭐</span>
+    <span class="star2">✨</span>
+    <span class="star3">⭐</span>
+    <span class="star4">✨</span>
+</div>
+
+<div class="container">
+
+    <header class="header">
+
+        <div class="doraemon-icon"></div>
+
+        <h1>Happy Teachers' Day!</h1>
+
+        <p>A little letter of gratitude 💙</p>
+
+    </header>
+
+
+    <!-- ENVELOPE -->
+    <section id="envelopeSection" class="envelope-section">
+
+        <button id="openButton" class="open-button">
+
+            <div class="envelope">
+
+                <div class="envelope-back"></div>
+
+                <div class="envelope-paper"></div>
+
+                <div class="envelope-front"></div>
+
+                <div class="flap"></div>
+
+                <div class="seal"></div>
+
+            </div>
+
+            <span class="open-text">
+                💌 Click to open your letter
+            </span>
+
+        </button>
+
+    </section>
+
+
+    <!-- LETTER -->
+    <section id="letter" class="letter">
+
+        <article class="letter-card">
+
+            <div class="letter-top">
+
+                <div class="photo-frame">
+
+                    <!-- PUT SIR RANDY'S PHOTO HERE -->
+                    <img
+                        src="353447894_3435874076671268_4462876624252987564_n.jpg"
+                        alt="Sir Randy Bello"
+                    >
+
+                </div>
+
+
+                <div class="title-area">
+
+                    <h2>
+                        Dear Sir "RANDY BELLO",
+                    </h2>
+
+                    <h3>
+                        💙 Happy Teachers' Day!
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="divider"></div>
+
+
+            <div class="message">
+
+                <p>
+                    Dear Sir Randy,
+                </p>
+
+                <p>
+                    On this special day, I want to say
+                    <span class="highlight">thank you</span>
+                    for all the patience, guidance, and effort
+                    you give to us every day.
+                </p>
+
+                <p>
+                    Just like Doraemon always has a special
+                    gadget whenever Nobita needs help,
+                    you are always there to guide us whenever
+                    we face something difficult.
+                </p>
+
+                <p>
+                    Your lessons are not only about what is
+                    written in our books. You also teach us
+                    to believe in ourselves, keep trying,
+                    and never give up when things become
+                    challenging.
+                </p>
+
+                <p>
+                    Thank you for sharing your knowledge,
+                    your time, and your patience with us.
+                    Your dedication as a teacher is something
+                    we truly appreciate.
+                </p>
+
+                <p>
+                    May you continue inspiring many more
+                    students and making a difference in
+                    their lives.
+                </p>
+
+            </div>
+
+
+            <div class="signature">
+
+                With heartfelt gratitude,
+
+                <strong>
+                    💙 Happy Teachers' Day, Sir Randy Bello!
+                </strong>
+
+                <br>
+
+                <span>
+                    Thank you for being an amazing teacher.
+                </span>
+
+            </div>
+
+
+            <div class="bell"></div>
+
+        </article>
+
+
+        <div style="text-align:center">
+
+            <button id="replayButton" class="replay">
+                🔄 Close & Replay
+            </button>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<script>
+
+const envelopeSection =
+    document.getElementById("envelopeSection");
+
+const openButton =
+    document.getElementById("openButton");
+
+const letter =
+    document.getElementById("letter");
+
+const replayButton =
+    document.getElementById("replayButton");
+
+
+let busy = false;
+
+
+/* OPEN LETTER */
+
+openButton.addEventListener("click", () => {
+
+    if (busy) return;
+
+    busy = true;
+
+    openButton.disabled = true;
+
+    envelopeSection.classList.add("opening");
+
+
+    setTimeout(() => {
+
+        envelopeSection.style.display = "none";
+
+        letter.classList.add("show");
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+        busy = false;
+
+    }, 1100);
+
+});
+
+
+/* CLOSE AND REPLAY */
+
+replayButton.addEventListener("click", () => {
+
+    if (busy) return;
+
+    busy = true;
+
+    letter.classList.remove("show");
+
+    setTimeout(() => {
+
+        letter.style.display = "none";
+
+        envelopeSection.style.display = "block";
+
+        envelopeSection.classList.remove("opening");
+
+        openButton.disabled = false;
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+        setTimeout(() => {
+            letter.style.display = "";
+            busy = false;
+        }, 50);
+
+    }, 700);
+
+});
+
+</script>
+
+</body>
+</html>
+```
